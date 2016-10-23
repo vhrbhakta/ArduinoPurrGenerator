@@ -27,14 +27,21 @@ option enabled in File -> Preferences.
 
 
  */
+const int ledPinGreen =  4;      // the number of the LED pin
+const int ledPinBlue =  5;      // the number of the LED pin
 const int buttonPin = 2;     // the number of the pushbutton pin
 int buttonState = 0;         // variable for reading the pushbutton status
 int i;
+
+int ledStateGreen = LOW;             // ledState used to set the LED
+int ledStateBlue = LOW;             // ledState used to set the LED
 
 void setup() {
 // initialize the pushbutton pin as an input:
   pinMode(buttonPin, INPUT);
  i=-1;
+  pinMode(ledPinGreen, OUTPUT);
+  pinMode(ledPinBlue, OUTPUT);
 }
 
 void loop() {
@@ -46,6 +53,8 @@ void loop() {
     noTone(3);
     if(i == 0){
       // play a note on pin 2 for 10 s:
+      ledStateGreen = HIGH;
+      digitalWrite(ledPinGreen, ledStateGreen);
       tone(3, 31);
       delay(1000);
     }
@@ -58,6 +67,10 @@ void loop() {
       delay(1000);
     }
     else if(i == 3){
+      ledStateGreen = LOW;
+      digitalWrite(ledPinGreen, ledStateGreen);
+      ledStateBlue = HIGH;
+      digitalWrite(ledPinBlue, ledStateBlue);
       tone(3, 60);
       delay(1000);
     }
@@ -94,10 +107,18 @@ void loop() {
       //noTone(3);
       delay(1000);
       noTone(3);
+      ledStateGreen = LOW;
+      digitalWrite(ledPinGreen, ledStateGreen);
+      ledStateBlue = LOW;
+      digitalWrite(ledPinBlue, ledStateBlue);
       i=-3;     
     }
     else{
       noTone(3);
+      ledStateGreen = LOW;
+      digitalWrite(ledPinGreen, ledStateGreen);
+      ledStateBlue = LOW;
+      digitalWrite(ledPinBlue, ledStateBlue);
       buttonState = digitalRead(buttonPin);
     }
     buttonState = digitalRead(buttonPin);
