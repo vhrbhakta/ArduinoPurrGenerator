@@ -28,20 +28,19 @@ option enabled in File -> Preferences.
 
  */
 const int ledPinGreen =  4;      // the number of the LED pin
-const int ledPinBlue =  5;      // the number of the LED pin
+const int ledPinWhite =  5;      // the number of the LED pin
 const int buttonPin = 2;     // the number of the pushbutton pin
 int buttonState = 0;         // variable for reading the pushbutton status
 int i;
-
 int ledStateGreen = LOW;             // ledState used to set the LED
-int ledStateBlue = LOW;             // ledState used to set the LED
+int ledStateWhite = LOW;             // ledState used to set the LED
 
 void setup() {
 // initialize the pushbutton pin as an input:
   pinMode(buttonPin, INPUT);
  i=-1;
   pinMode(ledPinGreen, OUTPUT);
-  pinMode(ledPinBlue, OUTPUT);
+  pinMode(ledPinWhite, OUTPUT);
 }
 
 void loop() {
@@ -59,18 +58,22 @@ void loop() {
       delay(1000);
     }
     else if(i == 1){
+      ledStateGreen = HIGH;
+      digitalWrite(ledPinGreen, ledStateGreen);
       tone(3, 40);
       delay(1000);
     }
     else if(i == 2){
+      ledStateGreen = HIGH;
+      digitalWrite(ledPinGreen, ledStateGreen);
       tone(3, 50);
       delay(1000);
     }
     else if(i == 3){
       ledStateGreen = LOW;
       digitalWrite(ledPinGreen, ledStateGreen);
-      ledStateBlue = HIGH;
-      digitalWrite(ledPinBlue, ledStateBlue);
+      ledStateWhite = HIGH;
+      digitalWrite(ledPinWhite, ledStateWhite);
       tone(3, 60);
       delay(1000);
     }
@@ -103,22 +106,22 @@ void loop() {
       delay(1000);
     }
     else if(i == 11){
-      tone(3, 140,1000);
+      tone(3, 140);
       //noTone(3);
       delay(1000);
       noTone(3);
       ledStateGreen = LOW;
       digitalWrite(ledPinGreen, ledStateGreen);
-      ledStateBlue = LOW;
-      digitalWrite(ledPinBlue, ledStateBlue);
+      ledStateWhite = LOW;
+      digitalWrite(ledPinWhite, ledStateWhite);
       i=-3;     
     }
     else{
       noTone(3);
       ledStateGreen = LOW;
       digitalWrite(ledPinGreen, ledStateGreen);
-      ledStateBlue = LOW;
-      digitalWrite(ledPinBlue, ledStateBlue);
+      ledStateWhite = LOW;
+      digitalWrite(ledPinWhite, ledStateWhite);
       buttonState = digitalRead(buttonPin);
     }
     buttonState = digitalRead(buttonPin);
